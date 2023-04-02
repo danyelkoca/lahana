@@ -9,7 +9,6 @@
   export let background_color;
 
   function changeLang(lang) {
-    console.log(lang);
     language.set(lang);
   }
 </script>

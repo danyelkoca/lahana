@@ -1,8 +1,6 @@
 <script>
   export let color;
   export let size;
-
-  console.log(color, size);
 </script>
 
 <svg
