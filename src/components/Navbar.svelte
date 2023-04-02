@@ -43,13 +43,28 @@
         </button>
       </div>
       {#each $sections as section}
-        <a href="{base}/{section.id}">{section.title}</a>
+        <a class="navbar-link" href="{base}/{section.id}">
+          <svelte:component
+            this={section.icon}
+            color={"rgba(255,255,255,0.8)"}
+            size={20}
+          />
+          <p>{section.title}</p>
+        </a>
       {/each}
     </div>
   </div>
 </div>
 
 <style>
+  .navbar-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .navbar-link p {
+    margin-left: 0.3rem;
+  }
   .language {
     display: flex;
     flex-direction: row;
@@ -99,7 +114,7 @@
     margin: 0.5rem 1rem 0.5rem 0.5rem;
   }
   .right a {
-    margin: 0.5rem;
+    margin: 0.6rem;
     font-weight: 300;
   }
 </style>
