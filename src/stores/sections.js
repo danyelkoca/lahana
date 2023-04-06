@@ -1,8 +1,4 @@
 import { readable } from "svelte/store";
-import About from "$components/sections/About.svelte";
-import Blog from "$components/sections/Blog.svelte";
-import Contact from "$components/sections/Contact.svelte";
-import Cart from "$components/sections/Cart.svelte";
 import about from "$assets/icons/about.svelte";
 import blog from "$assets/icons/blog.svelte";
 import cart from "$assets/icons/cart.svelte";
@@ -11,26 +7,22 @@ import contact from "$assets/icons/contact.svelte";
 export const sections = readable([
   {
     id: "cart",
-    title: "Cart",
-    component: Cart,
+    title: { en: "Cart", jp: "カート" },
     icon: cart,
   },
   {
     id: "about",
-    title: "About",
-    component: About,
+    title: { en: "About", jp: "私たしについて" },
     icon: about,
   },
   {
     id: "blog",
-    title: "Blog",
-    component: Blog,
+    title: { en: "Blog", jp: "ブログ" },
     icon: blog,
   },
   {
     id: "contact",
-    title: "Contact",
-    component: Contact,
+    title: { en: "Contact", jp: "問い合わせ" },
     icon: contact,
   },
 ]);

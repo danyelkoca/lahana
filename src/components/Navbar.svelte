@@ -7,18 +7,26 @@
   import { language } from "$stores/main";
   export let color;
   export let background_color;
+  import { page } from "$app/stores";
+  import { goto } from "$app/navigation";
 
-  function changeLang(lang) {
-    language.set(lang);
+  function changeLang(new_language) {
+    let current_language = $language;
+    goto(
+      $page.url.pathname.replace(`/${current_language}`, `/${new_language}`)
+    );
+    language.set(new_language);
   }
+
+  let border = `solid 0.5px ${color}`;
 </script>
 
 <div
   class="navbar-container"
-  style={`background: ${background_color}; color: ${color}`}
+  style={`background: ${background_color}; color: ${color}; z-index: 2; border-bottom:${border}`}
 >
   <div class="navbar">
-    <a href="{base}/" class="left">
+    <a href="{base}/{$language}" class="left">
       <Logo {color} />
       <h3>Lahana</h3>
     </a>
@@ -42,13 +50,11 @@
         </button>
       </div>
       {#each $sections as section}
-        <a class="navbar-link" href="{base}/{section.id}">
-          <svelte:component
-            this={section.icon}
-            color={"rgba(255,255,255,0.8)"}
-            size={20}
-          />
-          <p>{section.title}</p>
+        <a class="navbar-link" href="{base}/{$language}/{section.id}">
+          <svelte:component this={section.icon} {color} size={20} />
+          <p style={`font-size: ${$language == "jp" ? "0.6rem" : "0.8rem"}`}>
+            {section.title[$language]}
+          </p>
         </a>
       {/each}
     </div>
